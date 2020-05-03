@@ -13,7 +13,7 @@ connectDB();
 //express formatting
 app.use(express.json({ extended: false }));
 
-app.use('/hello', require('./routes/api/hello'));
+// app.use('/hello', require('./routes/api/hello'));
 // app.use('/properties', require('./routes/api/properties'));
 
 if (!module.parent) {
