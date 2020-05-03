@@ -1,0 +1,16 @@
+version: '3'
+services:
+  app:
+    container_name: cloud_comp
+    restart: always
+    build: .
+    ports:
+      - '12190:12190'
+      - '12191:12191'
+    links:
+      - mongo
+  mongo:
+    container_name: mongodb
+    image: mongo
+    ports:
+      - '27017:27017'
