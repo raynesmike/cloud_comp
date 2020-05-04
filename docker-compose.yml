@@ -5,8 +5,8 @@ services:
     restart: always
     build: .
     ports:
-      - '12190:12190'
-      - '12191:12191'
+      - '8080:8080'
+      - '8081:8081'
     links:
       - mongo
   mongo:
