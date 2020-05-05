@@ -1,16 +1,27 @@
-version: '3'
+# Use root/example as user/password credentials
+version: '3.1'
+
 services:
-  app:
-    container_name: cloud_comp
-    restart: always
-    build: .
-    ports:
-      - '8080:8080'
-      - '8081:8081'
-    links:
-      - mongo
+
   mongo:
-    container_name: mongodb
     image: mongo
+    build: 
+      context: ./
+      dockerfile: ./Dockerfile
+    restart: always
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: root
+      MONGO_INITDB_ROOT_PASSWORD: Rowdy1902
+    container_name: mongo
+    hostname: mongo
+      
+  mongo-express:
+    image: mongo-express
+    restart: always
     ports:
-      - '27017:27017'
+      - 8081:8081
+    environment:
+      ME_CONFIG_MONGODB_ADMINUSERNAME: root
+      ME_CONFIG_MONGODB_ADMINPASSWORD: Rowdy1902
+    container_name: mongo-express
+    hostname: mongo-express
