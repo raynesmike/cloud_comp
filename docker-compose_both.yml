@@ -1,0 +1,60 @@
+# Use root/example as user/password credentials
+version: '3.0'
+
+services:
+
+  mongo:
+    image: mongo
+    build: 
+      context: ./
+      dockerfile: ./mongo/Dockerfile
+    restart: always
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: root
+      MONGO_INITDB_ROOT_PASSWORD: Rowdy1902
+    ports:
+      - 27017:27017
+    container_name: mongo
+    hostname: mongo
+      
+  mongo-express:
+    image: mongo-express
+    restart: always
+    environment:
+      ME_CONFIG_MONGODB_ADMINUSERNAME: root
+      ME_CONFIG_MONGODB_ADMINPASSWORD: Rowdy1902
+    ports:
+      - 8081:8081
+    container_name: mongo-express
+    hostname: mongo-express
+  
+  mysql:  
+    image: mysql:8.0.17
+    build: 
+      context: ./
+      dockerfile: ./mysql/Dockerfile
+    environment:
+      MYSQL_DATABASE: test
+      MYSQL_ROOT_PASSWORD: Rowdy1902
+    command: mysqld --bind-address=0.0.0.0
+    ports:
+      - 3306:3306
+    container_name: mysql
+    hostname: mysql
+    
+  phpmyadmin:
+    image: phpmyadmin
+    build:
+      context: ./
+      dockerfile: ./phpMyAdmin/Dockerfile
+    environment:
+      PMA_HOST: mysql
+    restart: always
+    ports:
+      - 8080:80
+    container_name: phpmyadmin
+    hostname: phpmyadmin
+    depends_on:
+      - mysql
+    links:
+      - mysql

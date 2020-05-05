@@ -7,7 +7,7 @@ services:
     image: mongo
     build: 
       context: ./
-      dockerfile: ./Dockerfile
+      dockerfile: ./mongo/Dockerfile
     restart: always
     environment:
       MONGO_INITDB_ROOT_USERNAME: root
