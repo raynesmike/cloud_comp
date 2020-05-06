@@ -1,0 +1,18 @@
+CREATE DATABASE IF NOT EXISTS test;
+USE test;
+CREATE TABLE IF NOT EXISTS sample_data (
+    id INT NOT NULL AUTO_INCREMENT,
+    age INT,
+    weight DECIMAL(10 , 2 ),
+    wtyargo DECIMAL(10 , 2 ),
+	wtkg2 DECIMAL(10 , 2 ),
+	htm3 INT,
+	sex INT,
+    PRIMARY KEY (id)
+);
+LOAD DATA LOCAL INFILE './sample_data.csv' 
+INTO TABLE sample_data
+FIELDS TERMINATED BY ',' 
+ENCLOSED BY '"'
+LINES TERMINATED BY '\n'
+IGNORE 1 ROWS;

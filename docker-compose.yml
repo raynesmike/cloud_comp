@@ -27,3 +27,34 @@ services:
       - 8081:8081
     container_name: mongo-express
     hostname: mongo-express
+  
+  mysql:  
+    image: mysql:8.0.17
+    build: 
+      context: ./
+      dockerfile: ./mysql/Dockerfile
+    environment:
+      MYSQL_DATABASE: test
+      MYSQL_ROOT_PASSWORD: Rowdy1902
+    command: mysqld --bind-address=0.0.0.0
+    ports:
+      - 3306:3306
+    container_name: mysql
+    hostname: mysql
+    
+  phpmyadmin:
+    image: phpmyadmin
+    build:
+      context: ./
+      dockerfile: ./phpMyAdmin/Dockerfile
+    environment:
+      PMA_HOST: mysql
+    restart: always
+    ports:
+      - 8080:80
+    container_name: phpmyadmin
+    hostname: phpmyadmin
+    depends_on:
+      - mysql
+    links:
+      - mysql

@@ -4,10 +4,9 @@ ENV ACCEPT_EULA=Y
 ENV MYSQL_DATABASE=test
 ENV MYSQL_ROOT_PASSWORD=Rowdy1902
 
-WORKDIR /app
-
 COPY CreateApiUser.sql /docker-entrypoint-initdb.d/
-COPY initializeDB.sh /
+COPY CreateTable.sql /
+COPY InsertMySQL.sql /
 COPY sample_data.csv /
 
 #docker-entrypoint-initdb.d/
