@@ -1,0 +1,1 @@
+time mongo --eval 'db.sample_data.find({ $where: function() { return this.weight_kg_current > this.weight_kg_2019 } })' -u root -p 

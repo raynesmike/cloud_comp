@@ -1,0 +1,1 @@
+time mongo --eval 'db.sample_data.deleteMany({})' -u root -p 

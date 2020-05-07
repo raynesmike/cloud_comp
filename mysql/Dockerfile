@@ -8,6 +8,8 @@ COPY CreateApiUser.sql /docker-entrypoint-initdb.d/
 COPY CreateTable.sql /
 COPY InsertMySQL.sql /
 COPY sample_data.csv /
+COPY SearchMySQL.sql /
+COPY DeleteMySQL.sql /
 
 #docker-entrypoint-initdb.d/
 

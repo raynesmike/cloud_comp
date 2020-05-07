@@ -5,6 +5,8 @@ FROM mongo
 
 COPY initializeDB.sh /
 COPY sample_data.csv /
+COPY SearchMongoDB.sh /
+COPY DeleteMongoDB.sh /
 
 # Define default command.
 CMD ["mongod"]
