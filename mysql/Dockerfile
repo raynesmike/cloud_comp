@@ -10,6 +10,7 @@ COPY InsertMySQL.sql /
 COPY sample_data.csv /
 COPY SearchMySQL.sql /
 COPY DeleteMySQL.sql /
+COPY sample_data_mysql.csv /
 
 #docker-entrypoint-initdb.d/
 

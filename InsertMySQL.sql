@@ -10,9 +10,9 @@ CREATE TABLE IF NOT EXISTS sample_data (
 	sex INT NOT NULL,
     PRIMARY KEY (id)
 );
-LOAD DATA LOCAL INFILE './sample_data.csv' 
+LOAD DATA LOCAL INFILE './sample_data_mysql.csv' 
 INTO TABLE sample_data
 FIELDS TERMINATED BY ',' 
 ENCLOSED BY '"'
-LINES TERMINATED BY '\n'
+LINES TERMINATED BY '\r\n'
 IGNORE 1 ROWS;
